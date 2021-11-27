@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-20 mx-auto">
+        <a href="/agregar/movimiento" class="mx-auto btn btn-success mx-10">Agrega un movimiento =></a>
+        <br>
+        <a href="/buscar/movimientos" class="mx-auto btn btn-success mt-10">Buscar un movimiento =></a>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>N° articulo</th>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {{#each movimientos}}
+          <tr>
+              <td>{{id_movimiento}}</td>
+              <td>{{id_articulo}}</td>
+              <td>{{moment fecha}}</td>
+              <td>{{tipo}}</td>
+              <td>${{precio}}</td>
+              <td>{{cantidad}}</td>
+              <td><a href="/eliminar/movimiento/{{id_movimiento}}" class="mx-auto btn btn-danger">Eliminar</a>
+              <a href="/editar/movimiento/{{id_movimiento}}" class="mx-auto btn btn-secondary">Editar</a>
+              </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>

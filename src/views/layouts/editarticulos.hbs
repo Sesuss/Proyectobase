@@ -1,0 +1,37 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-dark mb-3 h4">Editar articulo {{edicion.id_articulo}}</h1>
+                    <form action="/editar/articulo/{{edicion.id_articulo}}" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nombre"  value="{{edicion.nombre}}" class="form-control text-dark m-1" placeholder="Nombre" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="cantidad" value="{{edicion.cantidad}}" class="form-control text-dark m-1" placeholder="Cantidad en existencia">
+                        </div>
+                        <div class="form-group">
+                            <select name="disponible" id="" class="form-control text-dark m-1 ">
+                                <option value="Si">Si</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="precio" value="{{edicion.precio}}" class="form-control text-dark m-1" placeholder="Precio">
+                        </div>
+                        <div class="form-group">
+                            <input type="text"name="descripcion" value="{{edicion.descripcion}}" rows="2" class="form-control text-dark m-1 " placeholder="Descripcion">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block mx-1">
+                                Guardar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-20 mx-auto">
+        <a href="/agregar/articulo" class="mx-auto btn btn-success md-10">Agrega un articulo =></a>
+        <br>
+        <a href="/buscar/articulos"  class="mx-auto btn btn-success mt-10">Buscar un articulo =></a>
+        <br>
+        <a href="/descargar" target="_blank" class="mx-auto btn btn-success md-10"> Descargar factura =></a>
+        <br>
+        <a href="/ver"  class="mx-auto btn btn-success md-10">factura =></a>
+        <br>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Disponible</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {{#each articulos}}
+          <tr>
+              <td>{{id_articulo}}</td>
+              <td>{{nombre}}</td>
+              <td>{{cantidad}}</td>
+              <td>{{disponible}}</td>
+              <td>${{precio}}</td>
+              <td>{{descripcion}}</td>
+              <td><a href="/eliminar/articulo/{{id_articulo}}" class="mx-auto btn btn-danger ">Eliminar</a>
+              <a href="/editar/articulo/{{id_articulo}}" class="mx-auto btn btn-secondary ">Editar</a>
+              </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>

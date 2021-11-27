@@ -1,0 +1,75 @@
+<div class="container p-3">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <div class="input-group">
+                        <div class="form-outline">
+                            <input type="text" id="busqueda" class="form-control m-2 pl-2" />
+                        </div>
+                        <button type="button" class="btn btn-primary m-2 btn-block" id="btn">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+  <div class="row">
+        <div class="col-md-20 mx-auto">
+            <h3>N°//Nombre//Cantidad//Disponible//Precio//Descripcion</h3>
+                <br>
+                 {{#each articulos}}
+            <h4 class="articulos" style="display:none"id="{{id_articulo}}">{{id_articulo}} //{{nombre}} //{{cantidad}} //{{disponible}} //${{precio}} //{{descripcion}} <a href="/eliminar/articulo/{{id_articulo}}" class="mx-auto btn btn-danger ">Eliminar</a><a href="/editar/articulo/{{id_articulo}}" class="mx-auto btn btn-secondary ">Editar</a></h4>
+
+        {{/each}}
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const busqueda = document.getElementById("busqueda")
+    const boton = document.getElementById("btn")
+    let array=[]
+    {{#each articulos}}
+    array.push({
+         id:"{{id_articulo}}",
+        nombre:"{{nombre}}",
+        cantidad:"{{cantidad}}",
+        disponible:"{{disponible}}",
+        precio:"{{precio}}",
+        descripcion: "{{descripcion}}"
+    })
+    {{/each}}
+
+    function buscar() {
+     const texto=busqueda.value.toLowerCase()
+    if(texto==""){
+        for(index=0;index<array.length;index++){
+            document.getElementById(array[index].id).style.display="none"
+        }
+        return
+    }
+     for(index=0;index<array.length;index++){
+         let numero=array[index].id
+         let nombre=array[index].nombre.toLowerCase()
+         let cantidad=array[index].cantidad
+         let disponible=array[index].disponible.toLowerCase()
+         let precio=array[index].precio
+         let descripcion=array[index].descripcion.toLowerCase()
+         if(nombre.indexOf(texto) !== -1 ||numero.indexOf(texto) !== -1 ||cantidad.indexOf(texto) !== -1 ||disponible.indexOf(texto) !== -1 ||precio.indexOf(texto) !== -1 ||descripcion.indexOf(texto) !== -1){
+        document.getElementById(array[index].id).style.display="block"
+        }else{
+            document.getElementById(array[index].id).style.display="none"
+        }
+     }
+
+ }
+    boton.addEventListener("click", buscar)
+    busqueda.addEventListener("keyup", buscar)
+   busqueda.addEventListener("keydown", buscar)
+</script>

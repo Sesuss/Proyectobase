@@ -1,0 +1,41 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-dark mb-3 h4">Editar movimiento {{edicion.id_movimiento}}</h1>
+                    <form action="/editar/movimiento/{{edicion.id_movimiento}}" method="POST">
+                        <div class="form-group">
+                            <input type="number" name="numero" value="{{edicion.id_articulo}}"
+                                class="form-control text-dark m-1" placeholder="Numero de articulo" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="fecha" class="form-control text-dark m-1" placeholder="Fecha">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="precio" value="{{edicion.precio}}"
+                                class="form-control text-dark m-1" placeholder="Precio">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="cantidad" value="{{edicion.cantidad}}"
+                                class="form-control text-dark m-1 " placeholder="Cantidad">
+                        </div>
+                        <div class="form-group">
+                            <select name="tipo" id="" class="form-control text-dark m-1 ">
+                                <option value="alta">Altas</option>
+                                <option value="baja">Bajas</option>
+                                <option value="perdida">Perdidas</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block mx-1">
+                                Guardar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

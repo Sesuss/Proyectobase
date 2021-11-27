@@ -1,0 +1,85 @@
+<div class="container p-3">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <div class="input-group">
+                        <div class="form-outline">
+                            <input type="text" id="busqueda" class="form-control m-2 pl-2" />
+                        </div>
+                        <button type="button" class="btn btn-primary m-2 btn-block" id="btn">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5" id="contenido">
+  <div class="row">
+        <div class="col-md-20 mx-auto">
+            <h3>N°//N° de articulo//Fecha//Tipo//Cantidad//Precio</h3>
+                <br>
+                 {{#each movimientos}}
+            <h4 class="articulos" style="display:none"id="{{id_movimiento}}">{{id_movimiento}} //{{id_articulo}} //{{moment fecha}} //{{tipo}} //{{cantidad}} //${{precio}}  <a href="/eliminar/movimiento/{{id_movimiento}}" class="mx-auto btn btn-danger ">Eliminar</a><a href="/editar/movimiento/{{id_movimiento}}" class="mx-auto btn btn-secondary ">Editar</a></h4>
+
+        {{/each}}
+
+
+        </div>
+    </div>
+</div>
+<script>
+    const busqueda = document.getElementById("busqueda")
+    const boton = document.getElementById("btn")
+    let array=[]
+    {{#each movimientos}}
+    array.push({
+        id:"{{id_movimiento}}",
+        id_ar:"{{id_articulo}}",
+        fecha:"{{moment fecha}}",
+        tipo:"{{tipo}}",
+        cantidad:"{{cantidad}}",
+        precio:"{{precio}}"
+    })
+    {{/each}}
+
+    function buscar() {
+     const texto=busqueda.value.toLowerCase()
+    if(texto==""){
+        for(index=0;index<array.length;index++){
+            document.getElementById(array[index].id).style.display="none"
+        }
+        return
+    }
+     for(index=0;index<array.length;index++){
+         let id=array[index].id
+         let articulo=array[index].id_ar
+         let fecha=array[index].fecha.toLowerCase()
+         let tipo=array[index].tipo.toLowerCase()
+         let cantidad=array[index].cantidad
+         let precio=array[index].precio
+         if(id.indexOf(texto) !== -1 ||articulo.indexOf(texto) !== -1 ||fecha.indexOf(texto) !== -1 ||tipo.indexOf(texto) !== -1 ||precio.indexOf(texto) !== -1 ||cantidad.indexOf(texto) !== -1){
+        document.getElementById(array[index].id).style.display="block"
+        }else{
+            document.getElementById(array[index].id).style.display="none"
+        }
+     }
+
+ }
+    boton.addEventListener("click", buscar)
+    busqueda.addEventListener("keyup", buscar)
+   busqueda.addEventListener("keydown", buscar)
+
+function crear(){
+    
+    window.open("C:/Proyecto/src/views/layouts/pdf.pdf","_blank")
+}
+
+
+
+
+
+
+</script>

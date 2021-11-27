@@ -1,0 +1,74 @@
+<div class="container p-3">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <div class="input-group">
+                        <div class="form-outline">
+                            <input type="text" id="busqueda" class="form-control m-2 pl-2" />
+                        </div>
+                        <button type="button" class="btn btn-primary m-2 btn-block" id="btn">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-20 mx-auto">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Disponible</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Opciones</th>
+          </tr>
+        <br>
+        <tbody>
+            {{#each articulos}}
+            <tr style="display:none" id="{{id_articulo}}" >
+              <td>{{id_articulo}}</td>
+              <td>{{nombre}}</td>
+              <td>{{cantidad}}</td>
+              <td>{{disponible}}</td>
+              <td>${{precio}}</td>
+              <td>{{descripcion}}</td>
+              <td><a href="/eliminar/articulo/{{id_articulo}}" class="mx-auto btn btn-danger ">Eliminar</a>
+              <a href="/editar/articulo/{{id_articulo}}" class="mx-auto btn btn-secondary ">Editar</a>
+              </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+    const busqueda = document.getElementById("busqueda")
+    const boton = document.getElementById("btn")
+    let array=[]
+    {{#each articulos}}
+    array.push({
+         id:"{{id_articulo}}",
+        nombre:"{{nombre}}",
+        cantidad:"{{cantidad}}",
+        disponible:"{{disponible}}",
+        precio:"{{precio}}",
+        descripcion: "{{descripcion}}"
+    })
+    {{/each}}
+
+    function buscar(){
+     const texto=busqueda.value.toLowerCase()
+      let a=6
+      document.getElementById(a).style.display="block"
+ }
+    boton.addEventListener("click", buscar)
+</script>
