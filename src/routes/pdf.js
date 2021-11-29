@@ -3,7 +3,10 @@ const puppeteer = require("puppeteer")
 
 async function crearfacturas(url){
 console.log("Entro segunda funcion")
-    let navegador=await puppeteer.launch()
+    let navegador=await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox"]
+  })
 console.log("1")
     let pagina = await navegador.newPage()
 console.log("2")
