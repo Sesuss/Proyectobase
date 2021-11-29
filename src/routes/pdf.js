@@ -24,7 +24,7 @@ module.exports={
     },
 
     async descargar(req,res){
-        let pdf=await crearfacturas("http://localhost:4000/ver")
+        let pdf=await crearfacturas("https://ejemplo-name.herokuapp.com/ver")
 
         res.contentType("application/pdf")
         res.send(pdf)
