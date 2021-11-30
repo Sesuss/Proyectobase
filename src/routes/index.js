@@ -51,6 +51,15 @@ router.post("/agregar/articulo", async (req, res) => {
 
 //Ver contenido
 router.get("/articulos", async (req, res) => {
+    const fabricantes = await pool.query("SELECT * FROM fabricante")
+    res.render("layouts/verarticulos", { fabricantes })
+})
+
+
+
+
+
+/*router.get("/articulos", async (req, res) => {
     const articulos = await pool.query("SELECT * FROM articulos")
     for (let index = 0; index < articulos.length; index++) {
         if (articulos[index].disponible == 1) {
@@ -58,7 +67,7 @@ router.get("/articulos", async (req, res) => {
         } else { articulos[index].disponible = "No" }
     }
     res.render("layouts/verarticulos", { articulos })
-})
+})*/
 
 router.get("/movimientos", async (req, res) => {
     const movimientos = await pool.query("SELECT * FROM movimientos")

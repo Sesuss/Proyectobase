@@ -2,17 +2,13 @@ const puppeteer = require("puppeteer")
 
 
 async function crearfacturas(url){
-
-    let navegador=await puppeteer.launch()
-
+    let navegador=await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox"]})
     let pagina = await navegador.newPage()
-
     await pagina.goto(url)
-
     let pdf=await pagina.pdf()
-
     navegador.close()
-
     return pdf
 }
 
@@ -24,8 +20,7 @@ module.exports={
     },
 
     async descargar(req,res){
-        let pdf=await crearfacturas("http://localhost:4000/ver")
-
+        let pdf=await crearfacturas("https://ejemplo-name.herokuapp.com/ver")
         res.contentType("application/pdf")
         res.send(pdf)
 
