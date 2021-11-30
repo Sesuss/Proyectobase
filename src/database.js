@@ -5,10 +5,10 @@ const {promisify} =require("util")
 
 
 const pool = mysql.createPool({
-  host:"us-cdbr-east-04.cleardb.com",
-  user:"bf83f9772a3bf5",
-  password:"4f828b7d",
-  database:"heroku_6f6c273df2e61b8"
+  host:"162.240.36.111",
+  user:"wwzona",
+  password:"4lLr%[~%Q4t7",
+  database:"wwzona_almacen"
 })
 
 pool.getConnection((err, connection) => {
