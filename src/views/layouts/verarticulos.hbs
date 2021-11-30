@@ -14,13 +14,22 @@
           <tr>
             <th>N°</th>
             <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Disponible</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th>Opciones</th>
           </tr>
         </thead>
         <tbody>
-            {{#each fabricantes}}
+            {{#each articulos}}
           <tr>
-              <td>{{codigo}}</td>
+              <td>{{id_articulo}}</td>
               <td>{{nombre}}</td>
+              <td>{{cantidad}}</td>
+              <td>{{disponible}}</td>
+              <td>${{precio}}</td>
+              <td>{{descripcion}}</td>
               <td><a href="/eliminar/articulo/{{id_articulo}}" class="mx-auto btn btn-danger ">Eliminar</a>
               <a href="/editar/articulo/{{id_articulo}}" class="mx-auto btn btn-secondary ">Editar</a>
               </td>
